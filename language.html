@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Choose Language — Sir Ambedkar Library</title>
+<meta name="description" content="Choose your preferred language — Hindi or English.">
+<link rel="icon" href="logo.png">
+<meta name="robots" content="noindex, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ ROOT ============ */
+:root {
+  --midnight: #07111F;
+  --deep-blue: #101E30;
+  --cyan: #10D9F5;
+  --violet: #A78BFA;
+  --cloud: #F4F7FB;
+  --muted: #9DB0C8;
+  --card-border: rgba(157, 176, 200, 0.15);
+}
+
+/* ============ RESET ============ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--midnight);
+  color: var(--cloud);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(700px 500px at 20% 20%, rgba(16,217,245,0.12), transparent 60%),
+    radial-gradient(800px 600px at 80% 80%, rgba(167,139,250,0.12), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============ WRAP ============ */
+.wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+}
+
+/* ============ LOGO ============ */
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+.logo-wrap img {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 0 30px rgba(16,217,245,0.35);
+}
+.logo-wrap-text { text-align: left; }
+.logo-wrap-text strong {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+  display: block;
+  letter-spacing: -0.3px;
+}
+.logo-wrap-text small {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+/* ============ HEADINGS ============ */
+h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, #F4F7FB 40%, #10D9F5 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sub {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+
+/* ============ OPTIONS ============ */
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+.option {
+  padding: 34px 24px;
+  background: rgba(16, 30, 48, 0.55);
+  border: 1.5px solid var(--card-border);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-align: center;
+  font-family: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.option:hover {
+  transform: translateY(-6px);
+  border-color: rgba(16,217,245,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+.option.selected {
+  border-color: var(--cyan);
+  background: linear-gradient(135deg, rgba(16,217,245,0.12), rgba(167,139,250,0.12));
+  box-shadow: 0 0 60px rgba(16,217,245,0.3);
+}
+.option-flag {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 4px;
+  transition: transform 0.4s ease;
+}
+.option:hover .option-flag {
+  transform: scale(1.15) rotate(-5deg);
+}
+.option-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.option-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.option.selected .option-name { color: var(--cyan); }
+.option.selected .option-sub { color: var(--cloud); }
+
+/* ============ CONTINUE BTN ============ */
+.continue-btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  color: var(--midnight);
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 30px rgba(16,217,245,0.35);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.continue-btn.ready {
+  opacity: 1;
+  pointer-events: auto;
+}
+.continue-btn.ready:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(16,217,245,0.55);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 540px) {
+  body { padding: 20px; }
+  .logo-wrap { margin-bottom: 26px; gap: 10px; }
+  .logo-wrap img { width: 50px; height: 50px; }
+  .logo-wrap-text strong { font-size: 0.95rem; }
+  .logo-wrap-text small { font-size: 0.65rem; }
+
+  h1 { font-size: 1.7rem; letter-spacing: -1px; margin-bottom: 10px; }
+  .sub { font-size: 0.9rem; margin-bottom: 30px; padding: 0 8px; }
+
+  .options { grid-template-columns: 1fr; gap: 14px; margin-bottom: 24px; }
+  .option { padding: 26px 20px; border-radius: 18px; }
+  .option-flag { font-size: 2.4rem; }
+  .option-name { font-size: 1.3rem; }
+  .option-sub { font-size: 0.8rem; }
+
+  .continue-btn { padding: 15px 26px; font-size: 0.95rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- LOGO -->
+  <div class="logo-wrap">
+    <img src="logo.png" alt="Sir Ambedkar Library" />
+    <div class="logo-wrap-text">
+      <strong>Sir Ambedkar Library</strong>
+      <small>Abdullapur · Meerut</small>
+    </div>
+  </div>
+
+  <!-- HEADINGS -->
+  <h1 id="langTitle">Choose Your Language</h1>
+  <p class="sub" id="langSub">
+    Select the language you'd like to use on this website. You can change it later from the header.
+  </p>
+
+  <!-- OPTIONS -->
+  <div class="options" id="options">
+
+    <button class="option" data-lang="hi" type="button">
+      <div class="option-flag">🇮🇳</div>
+      <div class="option-name">हिन्दी</div>
+      <div class="option-sub">वेबसाइट हिन्दी में देखें</div>
+    </button>
+
+    <button class="option" data-lang="en" type="button">
+      <div class="option-flag">🌐</div>
+      <div class="option-name">English</div>
+      <div class="option-sub">View the website in English</div>
+    </button>
+
+  </div>
+
+  <!-- CONTINUE -->
+  <button class="continue-btn" id="continueBtn" type="button">
+    Continue →
+  </button>
+
+</div>
+
+<script>
+/* ============================================================
+   1. GUARD — must be logged in
+   ============================================================ */
+(function guard() {
+  let session = null;
+  try {
+    const raw = localStorage.getItem('sal_session');
+    if (raw) session = JSON.parse(raw);
+  } catch (e) {
+    localStorage.removeItem('sal_session');
+  }
+
+  // Agar login nahi hai → login page
+  if (!session || !session.email || !session.name) {
+    window.location.replace('login.html');
+    return;
+  }
+})();
+
+/* ============================================================
+   2. LANGUAGE CHOOSER LOGIC
+   ============================================================ */
+const langTitle = document.getElementById('langTitle');
+const langSub = document.getElementById('langSub');
+const continueBtn = document.getElementById('continueBtn');
+const options = document.querySelectorAll('.option');
+
+let selectedLang = null;
+
+/* Translations for THIS page only */
+const PAGE_TEXT = {
+  en: {
+    title: 'Choose Your Language',
+    sub: "Select the language you'd like to use on this website. You can change it later from the header.",
+    continue: 'Continue →'
+  },
+  hi: {
+    title: 'अपनी भाषा चुनें',
+    sub: 'इस वेबसाइट पर आप जिस भाषा का उपयोग करना चाहते हैं, उसे चुनें। आप बाद में हेडर से इसे बदल सकते हैं।',
+    continue: 'आगे बढ़ें →'
+  }
+};
+
+/* Option click */
+options.forEach(opt => {
+  opt.addEventListener('click', () => {
+    // Clear previous selection
+    options.forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+
+    selectedLang = opt.dataset.lang;
+
+    // Enable continue button
+    continueBtn.classList.add('ready');
+
+    // Live preview — translate this page
+    langTitle.textContent = PAGE_TEXT[selectedLang].title;
+    langSub.textContent = PAGE_TEXT[selectedLang].sub;
+    continueBtn.textContent = PAGE_TEXT[selectedLang].continue;
+
+    // Update document lang attribute
+    document.documentElement.lang = selectedLang;
+  });
+});
+
+/* Continue button */
+continueBtn.addEventListener('click', () => {
+  if (!selectedLang) return;
+
+  // Save language
+  try {
+    localStorage.setItem('sal_lang', selectedLang);
+  } catch (e) {
+    console.error('Could not save language:', e);
+  }
+
+  // Set HTML lang
+  document.documentElement.lang = selectedLang;
+
+  // Redirect to dashboard
+  window.location.href = 'dashboard.html';
+});
+
+/* ============================================================
+   3. IF LANGUAGE ALREADY CHOSEN → AUTO REDIRECT
+   ============================================================ */
+(function autoRedirectIfChosen() {
+  const current = localStorage.getItem('sal_lang');
+  if (current) {
+    // Already chose once — but let them change it here manually.
+    // Just pre-select the current language for UX.
+    const existing = document.querySelector(`.option[data-lang="${current}"]`);
+    if (existing) {
+      existing.classList.add('selected');
+      selectedLang = current;
+      continueBtn.classList.add('ready');
+      langTitle.textContent = PAGE_TEXT[current].title;
+      langSub.textContent = PAGE_TEXT[current].sub;
+      continueBtn.textContent = PAGE_TEXT[current].continue;
+      document.documentElement.lang = current;
+    }
+  }
+})();
+
+/* ============================================================
+   4. ENTER KEY SUPPORT
+   ============================================================ */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && selectedLang) {
+    continueBtn.click();
+  }
+});
+</script>
+
+</body>
+</html>

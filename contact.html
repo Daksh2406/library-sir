@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact — Sir Ambedkar Library | Abdullapur, Meerut</title>
+<meta name="description" content="Contact Sir Ambedkar Library, Abdullapur, Meerut. Send us a message on WhatsApp (9627055428) — we respond fast.">
+<meta name="keywords" content="Contact Sir Ambedkar Library, Library Address Meerut, Library WhatsApp Abdullapur">
+<meta name="author" content="Sir Ambedkar Library">
+<link rel="icon" href="logo.png">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Contact — Sir Ambedkar Library">
+<meta property="og:description" content="Get in touch with Sir Ambedkar Library — WhatsApp: 9627055428">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================ */
+/* === ROOT === */
+/* ============================================================ */
+:root {
+  --midnight: #07111F;
+  --deep-blue: #101E30;
+  --cyan: #10D9F5;
+  --violet: #A78BFA;
+  --cloud: #F4F7FB;
+  --muted: #9DB0C8;
+  --green: #25D366;
+
+  --bg: var(--midnight);
+  --text: var(--cloud);
+  --card-bg: rgba(16, 30, 48, 0.55);
+  --card-border: rgba(157, 176, 200, 0.15);
+
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Sora', 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================ */
+/* === RESET === */
+/* ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+  padding-top: 110px;
+}
+a, button, input, textarea, select { cursor: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================ */
+/* === UTILITY === */
+/* ============================================================ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-padding { padding: 100px 0; }
+.text-center { text-align: center; }
+.text-cyan { color: var(--cyan); }
+.text-violet { color: var(--violet); }
+.section-header { margin-bottom: 60px; }
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+.section-header p {
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+/* ============================================================ */
+/* === CURSOR === */
+/* ============================================================ */
+.cursor-dot {
+  width: 10px; height: 10px;
+  background: var(--cyan);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 0 20px var(--cyan);
+}
+.cursor-dot.hover {
+  width: 48px; height: 48px;
+  background: var(--violet);
+  box-shadow: 0 0 30px var(--violet);
+  mix-blend-mode: difference;
+}
+
+/* ============================================================ */
+/* === PRELOADER === */
+/* ============================================================ */
+.preloader {
+  position: fixed; inset: 0;
+  background: #07111F; z-index: 10000;
+  display: flex; justify-content: center; align-items: center;
+  flex-direction: column; gap: 24px;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-logo {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.preloader-logo img {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: #fff; padding: 6px;
+  animation: pulseLogo 1.8s ease-in-out infinite;
+}
+.preloader-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  color: #fff; letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.preloader-bar {
+  width: 220px; height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px; overflow: hidden;
+}
+.preloader-bar-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  animation: loadBar 1.6s ease-in-out forwards;
+}
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes loadBar { 0% { width: 0%; } 100% { width: 100%; } }
+
+/* ============================================================ */
+/* === BUTTONS === */
+/* ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 15px 32px; border-radius: 50px;
+  font-weight: 600; font-size: 0.95rem;
+  transition: var(--transition);
+  cursor: none; border: none; gap: 10px;
+  font-family: var(--font-body);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  color: var(--midnight);
+  box-shadow: 0 8px 30px rgba(16,217,245,0.35);
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(16,217,245,0.55);
+}
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--card-border);
+}
+.btn-ghost:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  transform: translateY(-3px) scale(1.02);
+}
+.btn-whatsapp {
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+}
+.btn-whatsapp:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+  background: #1ebe57;
+}
+
+/* ============================================================ */
+/* === HEADER === */
+/* ============================================================ */
+.floating-header {
+  position: fixed;
+  top: 20px; left: 50%;
+  transform: translateX(-50%);
+  width: 92%; max-width: 1200px;
+  z-index: 1000;
+}
+.header-inner {
+  background: rgba(7, 17, 31, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 50px;
+  padding: 10px 12px 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+.header-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.header-logo img {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fff; padding: 3px;
+}
+.header-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.header-logo-text strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem; color: #fff;
+  letter-spacing: -0.3px;
+}
+.header-logo-text small { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.5px; }
+
+.desktop-nav { display: flex; gap: 4px; align-items: center; margin: 0 auto; }
+.desktop-nav a {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.88rem;
+  transition: var(--transition);
+  padding: 9px 16px;
+  border-radius: 50px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.desktop-nav a:hover {
+  opacity: 1;
+  color: var(--midnight);
+  background: var(--cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16,217,245,0.4);
+}
+.desktop-nav a.active {
+  opacity: 1;
+  color: var(--cyan);
+  background: rgba(16,217,245,0.08);
+}
+.header-cta { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+.header-cta .btn { padding: 10px 20px; font-size: 0.85rem; }
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 50px;
+  background: rgba(16,217,245,0.08);
+  border: 1px solid rgba(16,217,245,0.25);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  cursor: none;
+}
+.lang-switch:hover {
+  background: rgba(16,217,245,0.18);
+  border-color: var(--cyan);
+}
+
+/* ============================================================ */
+/* === PROFILE === */
+/* ============================================================ */
+.profile-wrap { position: relative; }
+.profile-trigger {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 14px 6px 6px;
+  border-radius: 50px;
+  background: rgba(16,217,245,0.08);
+  border: 1px solid rgba(16,217,245,0.25);
+  transition: var(--transition);
+  cursor: none;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+.profile-trigger:hover {
+  background: rgba(16,217,245,0.15);
+  border-color: rgba(16,217,245,0.5);
+}
+.profile-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--midnight);
+  font-family: var(--font-display);
+  font-size: 0.88rem; font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(16,217,245,0.35);
+}
+.profile-name {
+  font-size: 0.85rem; font-weight: 600;
+  max-width: 110px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.profile-chevron { font-size: 0.7rem; color: var(--muted); transition: transform 0.3s ease; }
+.profile-wrap.open .profile-chevron { transform: rotate(180deg); }
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px); right: 0;
+  min-width: 240px;
+  background: rgba(7, 17, 31, 0.98);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+  backdrop-filter: blur(24px);
+  opacity: 0; visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 1001;
+}
+.profile-wrap.open .profile-dropdown {
+  opacity: 1; visibility: visible;
+  transform: translateY(0);
+}
+.profile-dd-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 8px;
+}
+.profile-dd-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 700;
+  margin-bottom: 3px;
+  word-break: break-word;
+}
+.profile-dd-email {
+  font-size: 0.78rem; color: var(--muted);
+  word-break: break-word;
+}
+.profile-dd-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--cyan);
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: rgba(16,217,245,0.1);
+  border: 1px solid rgba(16,217,245,0.25);
+  margin-top: 8px;
+}
+.profile-dd-badge::before {
+  content: '';
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+}
+.profile-dd-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  transition: var(--transition);
+  cursor: none;
+  width: 100%; text-align: left;
+  font-family: var(--font-body);
+  background: transparent; border: none;
+}
+.profile-dd-item:hover { background: rgba(16,217,245,0.08); color: var(--text); }
+.profile-dd-item .ic { width: 18px; font-size: 0.95rem; text-align: center; flex-shrink: 0; }
+.profile-dd-divider { height: 1px; background: var(--card-border); margin: 6px 0; }
+.profile-dd-item.logout { color: #ff9b9b; }
+.profile-dd-item.logout:hover { background: rgba(239,68,68,0.1); color: #ff9b9b; }
+
+/* ============================================================ */
+/* === HAMBURGER === */
+/* ============================================================ */
+.hamburger-btn {
+  display: none;
+  background: rgba(16,217,245,0.12);
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  width: 44px; height: 44px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: none;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.hamburger-btn:hover { background: var(--cyan); }
+.hamburger-btn span {
+  width: 20px; height: 2px;
+  background: #fff; border-radius: 2px;
+  transition: var(--transition);
+}
+.hamburger-btn.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger-btn.active span:nth-child(2) { opacity: 0; }
+.hamburger-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ============================================================ */
+/* === MOBILE MENU === */
+/* ============================================================ */
+.menu-overlay {
+  position: fixed; inset: 0;
+  background: rgba(7, 17, 31, 0.98);
+  backdrop-filter: blur(24px);
+  z-index: 999;
+  display: flex; justify-content: center; align-items: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  overflow-y: auto;
+}
+.menu-overlay.active { opacity: 1; visibility: visible; }
+.menu-content { text-align: center; padding: 40px 24px; width: 100%; max-width: 500px; }
+.menu-content ul { display: flex; flex-direction: column; gap: 18px; }
+.menu-content a {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -1px;
+  opacity: 0.65;
+  transition: var(--transition);
+  display: inline-block;
+}
+.menu-content a:hover, .menu-content a.active {
+  opacity: 1; color: var(--cyan);
+  transform: translateX(16px);
+}
+.mobile-user-card {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(16,217,245,0.06);
+  border: 1px solid rgba(16,217,245,0.25);
+  border-radius: 18px;
+  display: flex; align-items: center; gap: 14px;
+  text-align: left;
+}
+.mobile-user-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--midnight);
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 1.05rem;
+  flex-shrink: 0;
+}
+.mobile-user-info { flex: 1; min-width: 0; }
+.mobile-user-name {
+  font-family: var(--font-display);
+  font-size: 0.9rem; font-weight: 700;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mobile-user-email {
+  font-size: 0.75rem; color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mobile-actions {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 20px;
+}
+.mobile-actions .btn { width: 100%; justify-content: center; }
+
+/* ============================================================ */
+/* === PAGE HEAD === */
+/* ============================================================ */
+.page-head {
+  position: relative;
+  padding: 60px 0 70px;
+  overflow: hidden;
+  text-align: center;
+}
+.page-head::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 500px at 25% 30%, rgba(16,217,245,0.14), transparent 60%),
+    radial-gradient(800px 600px at 75% 70%, rgba(167,139,250,0.12), transparent 60%);
+  pointer-events: none;
+}
+.page-head-inner { position: relative; z-index: 2; }
+.page-head-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.78rem; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan); font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid rgba(16,217,245,0.3);
+  border-radius: 50px;
+  margin-bottom: 28px;
+  background: rgba(16,217,245,0.05);
+}
+.page-head-eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.page-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6.5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
+  margin-bottom: 24px;
+}
+.page-head h1 .line-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text);
+  display: inline-block;
+}
+.page-head h1 .line-gradient {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.page-head p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 660px;
+  margin: 0 auto;
+}
+.page-head p strong { color: var(--text); }
+
+/* ============================================================ */
+/* === QUICK CONTACT CARDS === */
+/* ============================================================ */
+.quick-contact { padding: 30px 0 70px; }
+.qc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+.qc-card {
+  position: relative;
+  padding: 32px 26px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  transition: var(--transition);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+}
+.qc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.qc-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(16,217,245,0.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.qc-card:hover::before { opacity: 1; }
+.qc-icon {
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(16,217,245,0.15), rgba(167,139,250,0.15));
+  border: 1px solid rgba(16,217,245,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease;
+}
+.qc-card:hover .qc-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+.qc-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.qc-value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+  word-break: break-word;
+}
+.qc-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ============================================================ */
+/* === FORM + INFO GRID === */
+/* ============================================================ */
+.contact-main { padding: 40px 0 100px; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* FORM SIDE */
+.contact-form-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 44px 38px;
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+.contact-form-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+}
+.form-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: rgba(37,211,102,0.1);
+  border: 1px solid rgba(37,211,102,0.3);
+  margin-bottom: 18px;
+}
+.form-tag .wa-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulseDot 2s infinite;
+}
+.contact-form-wrap h2 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.contact-form-wrap h2 span {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.contact-form-wrap > p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  line-height: 1.65;
+}
+.contact-form-wrap > p strong { color: var(--green); font-weight: 700; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+.form-group label .req { color: var(--cyan); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(7, 17, 31, 0.5);
+  border: 1.5px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2310D9F5' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 42px;
+}
+.form-group select option {
+  background: #0a1a2e;
+  color: var(--text);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(16,217,245,0.12);
+  background: rgba(7, 17, 31, 0.7);
+}
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: #ff6464;
+  box-shadow: 0 0 0 3px rgba(255,100,100,0.12);
+}
+.form-group textarea { resize: vertical; min-height: 130px; }
+.form-error-msg {
+  color: #ff9b9b;
+  font-size: 0.78rem;
+  margin-top: 6px;
+  display: none;
+}
+.form-group.has-error .form-error-msg { display: block; }
+
+.form-submit {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.form-submit .btn { flex-shrink: 0; }
+.form-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  flex: 1;
+  min-width: 180px;
+}
+.form-note strong { color: var(--green); font-weight: 700; }
+
+.form-msg {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-top: 18px;
+  display: none;
+  line-height: 1.55;
+}
+.form-msg.show { display: block; }
+.form-msg.success {
+  background: rgba(37,211,102,0.1);
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+.form-msg.error {
+  background: rgba(255,100,100,0.1);
+  border: 1px solid #ff6464;
+  color: #ff9b9b;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+.btn.loading .spinner { display: block; }
+.btn.loading .btn-text { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================================ */
+/* === INFO SIDE === */
+/* ============================================================ */
+.contact-info-side {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.info-block {
+  padding: 30px 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  backdrop-filter: blur(14px);
+  transition: var(--transition);
+}
+.info-block:hover {
+  border-color: rgba(167,139,250,0.35);
+}
+.info-block-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--card-border);
+}
+.info-block-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(16,217,245,0.15), rgba(167,139,250,0.15));
+  border: 1px solid rgba(16,217,245,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.info-block-head h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* Hours list */
+.hours-list { display: flex; flex-direction: column; gap: 10px; }
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(7, 17, 31, 0.4);
+  transition: background 0.3s ease;
+}
+.hours-row:hover {
+  background: rgba(16, 217, 245, 0.06);
+}
+.hours-day {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.hours-time {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+.hours-row.today {
+  background: rgba(16, 217, 245, 0.1);
+  border: 1px solid rgba(16, 217, 245, 0.3);
+}
+.hours-row.today .hours-day,
+.hours-row.today .hours-time {
+  color: var(--cyan);
+}
+.hours-row.today .hours-day::after {
+  content: ' • TODAY';
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* Address block */
+.address-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.address-text strong { color: var(--text); font-weight: 600; }
+
+/* Social row */
+.social-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.social-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(16,217,245,0.08);
+  border: 1px solid rgba(16,217,245,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.social-btn:hover {
+  background: var(--cyan);
+  color: var(--midnight);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(16,217,245,0.4);
+}
+.social-btn.wa {
+  background: rgba(37,211,102,0.1);
+  border-color: rgba(37,211,102,0.3);
+  color: var(--green);
+}
+.social-btn.wa:hover {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+  box-shadow: 0 10px 25px rgba(37,211,102,0.4);
+}
+
+/* WhatsApp card */
+.whatsapp-card {
+  padding: 30px 28px;
+  background: linear-gradient(135deg, rgba(37,211,102,0.08), rgba(37,211,102,0.03));
+  border: 1px solid rgba(37,211,102,0.25);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.whatsapp-card::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,211,102,0.15), transparent 70%);
+  pointer-events: none;
+}
+.whatsapp-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+.whatsapp-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+.whatsapp-card .btn { position: relative; z-index: 2; width: 100%; }
+
+/* ============================================================ */
+/* === MAP SECTION === */
+/* ============================================================ */
+.map-section { padding: 80px 0; background: rgba(16, 30, 48, 0.25); }
+.map-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #0a1a2e 0%, #07111F 100%);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+}
+.map-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.15) contrast(1.05);
+  transition: filter 0.4s ease;
+}
+.map-wrap:hover iframe {
+  filter: grayscale(0) contrast(1);
+}
+.map-actions-bottom {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================ */
+/* === DIRECTIONS === */
+/* ============================================================ */
+.directions-section { padding: 100px 0; }
+.directions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.dir-card {
+  padding: 32px 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.dir-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.dir-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(16,217,245,0.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.dir-card:hover::before { opacity: 1; }
+.dir-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  color: var(--cyan);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.dir-icon {
+  width: 50px; height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(16,217,245,0.15), rgba(167,139,250,0.15));
+  border: 1px solid rgba(16,217,245,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+}
+.dir-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.dir-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ============================================================ */
+/* === CTA === */
+/* ============================================================ */
+.cta-section { padding: 100px 0; }
+.cta-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(16,217,245,0.08), rgba(167,139,250,0.08));
+  border: 1px solid rgba(16,217,245,0.2);
+  border-radius: 32px;
+  padding: 80px 40px;
+  text-align: center;
+  overflow: hidden;
+}
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(16,217,245,0.15), transparent 70%);
+  pointer-events: none;
+}
+.cta-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 1;
+}
+.cta-card p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto 36px;
+  position: relative;
+  z-index: 1;
+}
+.cta-card .btn-group {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+
+/* ============================================================ */
+/* === FOOTER === */
+/* ============================================================ */
+.footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--card-border);
+  background: rgba(7, 17, 31, 0.6);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  gap: 50px;
+  margin-bottom: 60px;
+}
+.footer-brand .logo-wrap {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px;
+}
+.footer-brand .logo-wrap img {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #fff; padding: 3px;
+}
+.footer-brand .logo-wrap strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.footer-brand p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  transition: var(--transition);
+  font-size: 0.85rem; font-weight: 700;
+}
+.footer-social a:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  transform: translateY(-3px);
+}
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul li a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+.footer-col ul li a:hover { color: var(--cyan); padding-left: 6px; }
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ============================================================ */
+/* === MOBILE BOTTOM NAV === */
+/* ============================================================ */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  background: rgba(7, 17, 31, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--card-border);
+  z-index: 2000;
+  padding: 8px 0;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+}
+.bottom-nav ul { display: flex; justify-content: space-around; }
+.bottom-nav li { flex: 1; text-align: center; }
+.bottom-nav a {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 4px;
+  color: var(--muted);
+  opacity: 0.6;
+  transition: var(--transition);
+  padding: 6px 0;
+  position: relative;
+}
+.bottom-nav a:hover, .bottom-nav a.active { opacity: 1; color: var(--cyan); }
+.bottom-nav a svg {
+  width: 22px; height: 22px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.bottom-nav a span {
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.bottom-nav a.active::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: 50%;
+  transform: translateX(-50%);
+  width: 28px; height: 3px;
+  background: var(--cyan);
+  border-radius: 0 0 3px 3px;
+}
+
+/* ============================================================ */
+/* === FLOATING WHATSAPP === */
+/* ============================================================ */
+.wa-float {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.7rem;
+  box-shadow: 0 12px 30px rgba(37,211,102,0.45);
+  z-index: 500;
+  transition: var(--transition);
+  animation: waPulse 2.5s ease-in-out infinite;
+  text-decoration: none;
+}
+.wa-float:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37,211,102,0.6);
+}
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(37,211,102,0.45); }
+  50% { box-shadow: 0 12px 40px rgba(37,211,102,0.7), 0 0 0 12px rgba(37,211,102,0.1); }
+}
+
+/* ============================================================ */
+/* === REVEAL === */
+/* ============================================================ */
+.reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 1s ease, transform 1s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 1s ease, transform 1s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ============================================================ */
+/* === RESPONSIVE === */
+/* ============================================================ */
+@media (max-width: 1024px) {
+  .desktop-nav { display: none; }
+  .hamburger-btn { display: flex; }
+  .header-cta .btn-ghost,
+  .header-cta .btn-primary { display: none; }
+  .header-cta .profile-wrap { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  body { padding-top: 85px; padding-bottom: 90px; cursor: auto; }
+  a, button { cursor: pointer; }
+  .cursor-dot { display: none; }
+
+  .floating-header { top: 12px; width: 94%; }
+  .header-inner { padding: 8px 8px 8px 16px; }
+  .header-logo-text strong { font-size: 0.85rem; }
+  .header-logo-text small { display: none; }
+  .header-logo img { width: 36px; height: 36px; }
+  .hamburger-btn { width: 40px; height: 40px; }
+  .lang-switch { min-width: 42px; height: 36px; font-size: 0.72rem; padding: 0 10px; }
+
+  .page-head { padding: 30px 0 50px; }
+  .page-head h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+  }
+  .page-head h1 .line-outline { -webkit-text-stroke: 1.5px var(--text); }
+  .page-head p { font-size: 0.98rem; padding: 0 8px; }
+
+  .section-padding { padding: 60px 0; }
+  .section-header { margin-bottom: 44px; }
+  .section-header h2 { font-size: 1.8rem; letter-spacing: -1px; }
+  .section-header p { font-size: 0.95rem; }
+
+  .quick-contact { padding: 20px 0 50px; }
+  .qc-grid { gap: 14px; }
+  .qc-card { padding: 26px 22px; border-radius: 18px; }
+  .qc-icon { width: 46px; height: 46px; font-size: 1.3rem; margin-bottom: 16px; }
+  .qc-label { font-size: 0.62rem; letter-spacing: 1.5px; }
+  .qc-value { font-size: 0.95rem; }
+  .qc-desc { font-size: 0.8rem; }
+
+  .contact-main { padding: 30px 0 60px; }
+  .contact-grid { gap: 26px; }
+  .contact-form-wrap { padding: 30px 22px; border-radius: 22px; }
+  .contact-form-wrap h2 { font-size: 1.4rem; }
+  .contact-form-wrap > p { font-size: 0.9rem; margin-bottom: 22px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea { padding: 12px 16px; font-size: 0.9rem; }
+  .form-submit { flex-direction: column; align-items: stretch; }
+  .form-submit .btn { width: 100%; }
+  .form-note { text-align: center; }
+
+  .info-block { padding: 26px 22px; border-radius: 20px; }
+  .info-block-head { gap: 12px; margin-bottom: 18px; padding-bottom: 14px; }
+  .info-block-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+  .info-block-head h3 { font-size: 1rem; }
+  .hours-row { padding: 9px 12px; }
+  .hours-day { font-size: 0.85rem; }
+  .hours-time { font-size: 0.78rem; }
+  .address-text { font-size: 0.9rem; }
+  .social-btn { width: 40px; height: 40px; }
+  .whatsapp-card { padding: 26px 22px; border-radius: 20px; }
+  .whatsapp-card h3 { font-size: 1.05rem; }
+  .whatsapp-card p { font-size: 0.85rem; }
+
+  .map-section { padding: 50px 0; }
+  .map-wrap { aspect-ratio: 4 / 5; border-radius: 22px; }
+  .map-actions-bottom { flex-direction: column; margin-top: 18px; }
+  .map-actions-bottom .btn { width: 100%; }
+
+  .directions-section { padding: 60px 0; }
+  .directions-grid { gap: 16px; }
+  .dir-card { padding: 26px 22px; border-radius: 18px; }
+  .dir-num { font-size: 0.65rem; letter-spacing: 2px; margin-bottom: 12px; }
+  .dir-icon { width: 44px; height: 44px; font-size: 1.2rem; margin-bottom: 14px; }
+  .dir-card h4 { font-size: 1rem; }
+  .dir-card p { font-size: 0.86rem; }
+
+  .cta-section { padding: 60px 0; }
+  .cta-card { padding: 50px 24px; border-radius: 24px; }
+  .cta-card h2 { font-size: 1.6rem; }
+  .cta-card p { font-size: 0.95rem; margin-bottom: 26px; }
+  .cta-card .btn-group { flex-direction: column; }
+  .cta-card .btn-group .btn { width: 100%; }
+
+  .footer { padding: 60px 0 30px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .footer-brand p { margin: 0 auto 20px; }
+  .footer-social { justify-content: center; }
+  .footer-col ul li a:hover { padding-left: 0; }
+  .footer-bottom { justify-content: center; text-align: center; }
+
+  .bottom-nav { display: block; }
+
+  .wa-float {
+    bottom: 100px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-logo-text strong { font-size: 0.78rem; }
+  .page-head h1 { font-size: 1.9rem; }
+  .bottom-nav a span { font-size: 0.52rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .wa-float { animation: none; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Library",
+  "name": "Sir Ambedkar Library",
+  "url": "https://www.sirambedkarlibrary.com",
+  "telephone": "+91-9627055428",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Abdullapur",
+    "addressLocality": "Meerut",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "IN"
+  },
+  "openingHours": [
+    "Mo-Fr 06:00-23:00",
+    "Sa-Su 06:00-22:00"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">
+    <img src="logo.png" alt="Sir Ambedkar Library" />
+    <div class="preloader-logo-text">Sir Ambedkar Library</div>
+  </div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+</div>
+
+<!-- HEADER -->
+<header class="floating-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="logo.png" alt="Sir Ambedkar Library logo" />
+      <span class="header-logo-text">
+        <strong>Sir Ambedkar Library</strong>
+        <small>Abdullapur · Meerut</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <div class="header-cta">
+      <button class="lang-switch" id="langSwitch" aria-label="Change language">
+        <span id="langLabel">EN</span>
+      </button>
+
+      <div id="guestCta" style="display: flex; gap: 10px; align-items: center;">
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="book-visit.html" class="btn btn-primary">Book a Visit</a>
+      </div>
+
+      <div class="profile-wrap" id="profileWrap" style="display: none;">
+        <button class="profile-trigger" id="profileTrigger" aria-haspopup="true" aria-expanded="false">
+          <span class="profile-avatar" id="profileAvatar">U</span>
+          <span class="profile-name" id="profileName">User</span>
+          <span class="profile-chevron">▼</span>
+        </button>
+
+        <div class="profile-dropdown" id="profileDropdown" role="menu">
+          <div class="profile-dd-header">
+            <div class="profile-dd-name" id="ddName">User</div>
+            <div class="profile-dd-email" id="ddEmail">user@example.com</div>
+            <div class="profile-dd-badge">Member</div>
+          </div>
+          <a href="dashboard.html" class="profile-dd-item">
+            <span class="ic">🏠</span> Dashboard
+          </a>
+          <a href="dashboard.html" class="profile-dd-item">
+            <span class="ic">👤</span> My Profile
+          </a>
+          <div class="profile-dd-divider"></div>
+          <button class="profile-dd-item logout" id="logoutBtn">
+            <span class="ic">↪</span> Logout
+          </button>
+        </div>
+      </div>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-content">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+
+    <div id="mobileUserCard" style="display: none;">
+      <div class="mobile-user-card">
+        <div class="mobile-user-avatar" id="mobileAvatar">U</div>
+        <div class="mobile-user-info">
+          <div class="mobile-user-name" id="mobileName">User</div>
+          <div class="mobile-user-email" id="mobileEmail">user@example.com</div>
+        </div>
+      </div>
+      <div class="mobile-actions">
+        <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+        <button class="btn btn-ghost" id="mobileLogoutBtn">Logout</button>
+      </div>
+    </div>
+
+    <div id="mobileGuestCard" class="mobile-actions">
+      <a href="login.html" class="btn btn-ghost">Login</a>
+      <a href="book-visit.html" class="btn btn-primary">Book a Visit</a>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HEAD -->
+<section class="page-head">
+  <div class="container page-head-inner">
+    <div class="page-head-eyebrow">
+      <span class="dot"></span>
+      Get in Touch
+    </div>
+    <h1>
+      Let's <span class="line-outline">talk</span><br />
+      about your <span class="line-gradient">focus.</span>
+    </h1>
+    <p>
+      Fill the form and it lands directly on our <strong>WhatsApp</strong> — <strong>+91 96270 55428</strong>. Or just tap the WhatsApp button to message us.
+    </p>
+  </div>
+</section>
+
+<!-- QUICK CONTACT CARDS -->
+<section class="quick-contact">
+  <div class="container">
+    <div class="qc-grid">
+
+      <a href="https://wa.me/919627055428" target="_blank" rel="noopener" class="qc-card reveal">
+        <div class="qc-icon">💬</div>
+        <div class="qc-label">WhatsApp</div>
+        <div class="qc-value">+91 96270 55428</div>
+        <div class="qc-desc">Fastest way to reach us</div>
+      </a>
+
+      <a href="tel:+919627055428" class="qc-card reveal">
+        <div class="qc-icon">📞</div>
+        <div class="qc-label">Call Us</div>
+        <div class="qc-value">+91 96270 55428</div>
+        <div class="qc-desc">During library hours</div>
+      </a>
+
+      <a href="https://www.google.com/maps/search/Sir+ambedkar+library+Abdullapur+Meerut" target="_blank" rel="noopener" class="qc-card reveal">
+        <div class="qc-icon">📍</div>
+        <div class="qc-label">Visit Us</div>
+        <div class="qc-value">Abdullapur, Meerut</div>
+        <div class="qc-desc">Get directions on Google Maps</div>
+      </a>
+
+      <a href="book-visit.html" class="qc-card reveal">
+        <div class="qc-icon">📅</div>
+        <div class="qc-label">Book a Visit</div>
+        <div class="qc-value">Free trial</div>
+        <div class="qc-desc">Come see the space first</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FORM + INFO -->
+<section class="contact-main">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div class="contact-form-wrap reveal-left">
+        <span class="form-tag">
+          <span class="wa-dot"></span>
+          Sends to WhatsApp
+        </span>
+        <h2>Have a question? <span>Message us.</span></h2>
+        <p>Fill the form and press <strong>Send on WhatsApp</strong> — the message opens directly in WhatsApp with all your details filled in.</p>
+
+        <form id="contactForm" novalidate>
+
+          <div class="form-row">
+            <div class="form-group" data-field="name">
+              <label for="cname">Full Name <span class="req">*</span></label>
+              <input type="text" id="cname" name="name" placeholder="Your full name" required />
+              <div class="form-error-msg">Please enter your name</div>
+            </div>
+
+            <div class="form-group" data-field="phone">
+              <label for="cphone">Phone <span class="req">*</span></label>
+              <input type="tel" id="cphone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+              <div class="form-error-msg">Please enter a valid phone number</div>
+            </div>
+          </div>
+
+          <div class="form-group" data-field="subject">
+            <label for="csubject">Subject <span class="req">*</span></label>
+            <select id="csubject" name="subject" required>
+              <option value="">Select a topic</option>
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Library Timings">Library Timings</option>
+              <option value="Facilities Information">Facilities Information</option>
+              <option value="Feedback / Suggestion">Feedback / Suggestion</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="form-error-msg">Please choose a subject</div>
+          </div>
+
+          <div class="form-group" data-field="message">
+            <label for="cmessage">Message <span class="req">*</span></label>
+            <textarea id="cmessage" name="message" placeholder="Tell us what you'd like to know..." required></textarea>
+            <div class="form-error-msg">Please write a message (min 5 characters)</div>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-whatsapp" id="submitBtn">
+              <span class="spinner"></span>
+              <span class="btn-text">💬 Send on WhatsApp</span>
+            </button>
+            <p class="form-note">Goes to <strong>+91 96270 55428</strong> on WhatsApp.</p>
+          </div>
+
+          <div class="form-msg" id="formMsg"></div>
+        </form>
+      </div>
+
+      <!-- INFO SIDE -->
+      <div class="contact-info-side reveal-right">
+
+        <!-- Opening Hours -->
+        <div class="info-block">
+          <div class="info-block-head">
+            <div class="info-block-icon">🕐</div>
+            <h3>Opening Hours</h3>
+          </div>
+          <div class="hours-list" id="hoursList">
+            <div class="hours-row" data-day="1"><span class="hours-day">Monday</span><span class="hours-time">6:00 AM – 11:00 PM</span></div>
+            <div class="hours-row" data-day="2"><span class="hours-day">Tuesday</span><span class="hours-time">6:00 AM – 11:00 PM</span></div>
+            <div class="hours-row" data-day="3"><span class="hours-day">Wednesday</span><span class="hours-time">6:00 AM – 11:00 PM</span></div>
+            <div class="hours-row" data-day="4"><span class="hours-day">Thursday</span><span class="hours-time">6:00 AM – 11:00 PM</span></div>
+            <div class="hours-row" data-day="5"><span class="hours-day">Friday</span><span class="hours-time">6:00 AM – 11:00 PM</span></div>
+            <div class="hours-row" data-day="6"><span class="hours-day">Saturday</span><span class="hours-time">6:00 AM – 10:00 PM</span></div>
+            <div class="hours-row" data-day="0"><span class="hours-day">Sunday</span><span class="hours-time">6:00 AM – 10:00 PM</span></div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="info-block">
+          <div class="info-block-head">
+            <div class="info-block-icon">📍</div>
+            <h3>Our Location</h3>
+          </div>
+          <p class="address-text">
+            <strong>Sir Ambedkar Library</strong><br />
+            Abdullapur, Meerut<br />
+            Uttar Pradesh, India
+          </p>
+          <div class="map-actions-bottom" style="margin-top: 0;">
+            <a href="https://www.google.com/maps/search/Sir+ambedkar+library+Abdullapur+Meerut" target="_blank" rel="noopener" class="btn btn-ghost">Open in Google Maps</a>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="info-block">
+          <div class="info-block-head">
+            <div class="info-block-icon">🌐</div>
+            <h3>Follow Us</h3>
+          </div>
+          <div class="social-row">
+            <a href="https://wa.me/919627055428" target="_blank" rel="noopener" class="social-btn wa" aria-label="WhatsApp" title="WhatsApp">WA</a>
+            <a href="#" class="social-btn" aria-label="Instagram" title="Instagram">IG</a>
+            <a href="#" class="social-btn" aria-label="Facebook" title="Facebook">FB</a>
+          </div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <div class="whatsapp-card">
+          <h3>💬 Prefer to chat directly?</h3>
+          <p>Tap below to open WhatsApp with our number pre-filled — no form needed.</p>
+          <a href="https://wa.me/919627055428?text=Hi%20Sir%20Ambedkar%20Library%2C%20I%20have%20an%20enquiry"
+             target="_blank" rel="noopener" class="btn btn-whatsapp">Chat on WhatsApp</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <h2>Find <span class="text-cyan">Us</span></h2>
+      <p>We are located in Abdullapur, Meerut. Easy to reach from anywhere in the city.</p>
+    </div>
+
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13957.984255647725!2d77.76184445665281!3d29.0023004822921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390c7b21d4577201%3A0xfefe607ed5093ac1!2sSir%20ambedkar%20library!5e0!3m2!1sen!2sin!4v1791841847370!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        style="border:0; position:absolute; inset:0; width:100%; height:100%;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="Sir Ambedkar Library Location">
+      </iframe>
+    </div>
+
+    <div class="map-actions-bottom reveal">
+      <a href="https://www.google.com/maps/search/Sir+ambedkar+library+Abdullapur+Meerut" target="_blank" rel="noopener" class="btn btn-primary">Open in Google Maps</a>
+      <a href="https://wa.me/919627055428?text=Hi%2C%20I%20need%20directions%20to%20Sir%20Ambedkar%20Library"
+         target="_blank" rel="noopener" class="btn btn-whatsapp">💬 Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIONS -->
+<section class="directions-section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <h2>How to <span class="text-violet">Reach Us</span></h2>
+      <p>Multiple ways to get to Sir Ambedkar Library.</p>
+    </div>
+
+    <div class="directions-grid">
+
+      <div class="dir-card reveal">
+        <div class="dir-num">01 · BY SCOOTER / BIKE</div>
+        <div class="dir-icon">🏍️</div>
+        <h4>Two-Wheeler</h4>
+        <p>The easiest way to reach us. Parking space is available near the library entrance.</p>
+      </div>
+
+      <div class="dir-card reveal">
+        <div class="dir-num">02 · BY CAR</div>
+        <div class="dir-icon">🚗</div>
+        <h4>Four-Wheeler</h4>
+        <p>Reachable by car via main roads of Abdullapur. Contact us for parking guidance.</p>
+      </div>
+
+      <div class="dir-card reveal">
+        <div class="dir-num">03 · BY AUTO / E-RICKSHAW</div>
+        <div class="dir-icon">🛺</div>
+        <h4>Auto / E-Rickshaw</h4>
+        <p>Ask for "Sir Ambedkar Library, Abdullapur" — most local drivers know the area.</p>
+      </div>
+
+      <div class="dir-card reveal">
+        <div class="dir-num">04 · BY BUS</div>
+        <div class="dir-icon">🚌</div>
+        <h4>Public Transport</h4>
+        <p>Several bus routes pass through Abdullapur. Get down at the nearest stop and walk a short distance.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card reveal">
+      <h2>Ready to Visit?</h2>
+      <p>No fees. No forms. Just come and start studying at Sir Ambedkar Library.</p>
+      <div class="btn-group">
+        <a href="https://wa.me/919627055428?text=Hi%20Sir%20Ambedkar%20Library%2C%20I%20want%20to%20visit"
+           target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp Us</a>
+        <a href="facilities.html" class="btn btn-ghost">See Facilities</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-wrap">
+          <img src="logo.png" alt="Sir Ambedkar Library" />
+          <strong>Sir Ambedkar Library</strong>
+        </div>
+        <p>A free study space in Abdullapur, Meerut. Your Space. Your Focus. Your Future.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/919627055428" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="book-visit.html">Book a Visit</a></li>
+          <li><a href="login.html">Student Login</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><a href="tel:+919627055428">📞 +91 96270 55428</a></li>
+          <li><a href="https://wa.me/919627055428" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+          <li><a href="contact.html">📍 Abdullapur, Meerut, UP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Sir Ambedkar Library. All rights reserved.</span>
+      <span>100% Free Study Space</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919627055428?text=Hi%20Sir%20Ambedkar%20Library"
+   target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">💬</a>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav">
+  <ul>
+    <li>
+      <a href="index.html">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="facilities.html">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>Facilities</span>
+      </a>
+    </li>
+    <li>
+      <a href="gallery.html">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Gallery</span>
+      </a>
+    </li>
+    <li>
+      <a href="book-visit.html">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Visit</span>
+      </a>
+    </li>
+    <li>
+      <a href="contact.html" class="active">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Contact</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+/* ============================================================
+   WHATSAPP NUMBER (country code ke saath, no spaces, no +)
+   ============================================================ */
+const WHATSAPP_NUMBER = '919627055428';
+
+/* ============ 1. PRELOADER ============ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader')?.classList.add('hidden');
+  }, 1400);
+});
+
+/* ============ 2. AUTH STATE ============ */
+(function handleAuthState() {
+  let session = null;
+  try {
+    const raw = localStorage.getItem('sal_session');
+    if (raw) session = JSON.parse(raw);
+  } catch (e) {
+    localStorage.removeItem('sal_session');
+  }
+
+  const guestCta = document.getElementById('guestCta');
+  const profileWrap = document.getElementById('profileWrap');
+  const mobileUserCard = document.getElementById('mobileUserCard');
+  const mobileGuestCard = document.getElementById('mobileGuestCard');
+
+  if (session && session.email && session.name) {
+    const initial = session.name.charAt(0).toUpperCase();
+    document.getElementById('profileAvatar').textContent = initial;
+    document.getElementById('profileName').textContent = session.name.split(' ')[0];
+    document.getElementById('ddName').textContent = session.name;
+    document.getElementById('ddEmail').textContent = session.email;
+
+    guestCta.style.display = 'none';
+    profileWrap.style.display = 'block';
+
+    document.getElementById('mobileAvatar').textContent = initial;
+    document.getElementById('mobileName').textContent = session.name;
+    document.getElementById('mobileEmail').textContent = session.email;
+    mobileUserCard.style.display = 'block';
+    mobileGuestCard.style.display = 'none';
+
+    // Prefill form
+    document.getElementById('cname').value = session.name || '';
+  } else {
+    guestCta.style.display = 'flex';
+    profileWrap.style.display = 'none';
+    mobileUserCard.style.display = 'none';
+    mobileGuestCard.style.display = 'flex';
+  }
+})();
+
+/* ============ 3. PROFILE DROPDOWN ============ */
+const profileWrap = document.getElementById('profileWrap');
+const profileTrigger = document.getElementById('profileTrigger');
+
+profileTrigger?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  profileWrap.classList.toggle('open');
+  profileTrigger.setAttribute('aria-expanded', String(profileWrap.classList.contains('open')));
+});
+
+document.addEventListener('click', (e) => {
+  if (profileWrap && !profileWrap.contains(e.target)) {
+    profileWrap.classList.remove('open');
+    profileTrigger?.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') profileWrap?.classList.remove('open');
+});
+
+/* ============ 4. LOGOUT ============ */
+function doLogout() {
+  if (confirm('Are you sure you want to logout?')) {
+    localStorage.removeItem('sal_session');
+    window.location.href = 'index.html';
+  }
+}
+document.getElementById('logoutBtn')?.addEventListener('click', doLogout);
+document.getElementById('mobileLogoutBtn')?.addEventListener('click', doLogout);
+
+/* ============ 5. LANGUAGE SWITCHER ============ */
+const langSwitch = document.getElementById('langSwitch');
+const langLabel = document.getElementById('langLabel');
+
+(function initLangLabel() {
+  const currentLang = localStorage.getItem('sal_lang') || 'en';
+  if (langLabel) langLabel.textContent = currentLang === 'hi' ? 'हिं' : 'EN';
+})();
+
+langSwitch?.addEventListener('click', () => {
+  const current = localStorage.getItem('sal_lang') || 'en';
+  const next = current === 'hi' ? 'en' : 'hi';
+  localStorage.setItem('sal_lang', next);
+  if (langLabel) langLabel.textContent = next === 'hi' ? 'हिं' : 'EN';
+});
+
+/* ============ 6. CURSOR ============ */
+const cursorDot = document.getElementById('cursorDot');
+if (cursorDot && window.innerWidth > 1024) {
+  window.addEventListener('mousemove', e => {
+    cursorDot.style.left = `${e.clientX}px`;
+    cursorDot.style.top = `${e.clientY}px`;
+  });
+  document.querySelectorAll('a, button, .qc-card, .info-block, .map-wrap, input, textarea, select, .profile-trigger, .profile-dd-item, .lang-switch').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorDot.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursorDot.classList.remove('hover'));
+  });
+}
+
+/* ============ 7. HAMBURGER ============ */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+
+hamburgerBtn?.addEventListener('click', () => {
+  hamburgerBtn.classList.toggle('active');
+  menuOverlay.classList.toggle('active');
+  document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
+});
+
+menuOverlay?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburgerBtn.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ============ 8. SCROLL REVEAL ============ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+/* ============ 9. HIGHLIGHT TODAY ============ */
+const today = new Date().getDay();
+document.querySelectorAll('.hours-row').forEach(row => {
+  if (Number(row.dataset.day) === today) row.classList.add('today');
+});
+
+/* ============ 10. FORM VALIDATION ============ */
+function validateField(group) {
+  const field = group.dataset.field;
+  const input = group.querySelector('input, select, textarea');
+  const value = (input.value || '').trim();
+  let isValid = true;
+
+  if (field === 'name') {
+    isValid = value.length >= 2;
+  } else if (field === 'phone') {
+    const digits = value.replace(/\D/g, '');
+    isValid = digits.length >= 10 && digits.length <= 13;
+  } else if (field === 'subject') {
+    isValid = value !== '';
+  } else if (field === 'message') {
+    isValid = value.length >= 5;
+  }
+
+  group.classList.toggle('has-error', !isValid);
+  input.classList.toggle('error', !isValid);
+  return isValid;
+}
+
+document.querySelectorAll('.form-group[data-field]').forEach(group => {
+  const input = group.querySelector('input, select, textarea');
+  input?.addEventListener('blur', () => validateField(group));
+  input?.addEventListener('input', () => {
+    if (group.classList.contains('has-error')) validateField(group);
+  });
+  input?.addEventListener('change', () => {
+    if (group.classList.contains('has-error')) validateField(group);
+  });
+});
+
+/* ============ 11. FORM SUBMIT → WHATSAPP ============ */
+const form = document.getElementById('contactForm');
+const formMsg = document.getElementById('formMsg');
+const submitBtn = document.getElementById('submitBtn');
+
+form?.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  let allValid = true;
+  document.querySelectorAll('.form-group[data-field]').forEach(group => {
+    if (!validateField(group)) allValid = false;
+  });
+
+  if (!allValid) {
+    formMsg.className = 'form-msg error show';
+    formMsg.textContent = '⚠ Please fix the highlighted fields and try again.';
+    return;
+  }
+
+  const name = document.getElementById('cname').value.trim();
+  const phone = document.getElementById('cphone').value.trim();
+  const subject = document.getElementById('csubject').value;
+  const message = document.getElementById('cmessage').value.trim();
+
+  const waMessage =
+    `*New Enquiry — Sir Ambedkar Library*\n\n` +
+    `*Name:* ${name}\n` +
+    `*Phone:* ${phone}\n` +
+    `*Subject:* ${subject}\n\n` +
+    `*Message:*\n${message}`;
+
+  const encodedMsg = encodeURIComponent(waMessage);
+  const waURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+  formMsg.className = 'form-msg success show';
+  formMsg.textContent = '✓ Opening WhatsApp... If it doesn\'t open automatically, tap the button again.';
+
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+
+  setTimeout(() => {
+    const newWindow = window.open(waURL, '_blank');
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      window.location.href = waURL;
+    }
+    setTimeout(() => {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+    }, 800);
+  }, 400);
+});
+
+/* ============ 12. YEAR ============ */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Student Login — Sir Ambedkar Library</title>
+<meta name="description" content="Login to your Sir Ambedkar Library student account.">
+<link rel="icon" href="logo.png">
+<meta name="robots" content="noindex, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ ROOT ============ */
+:root {
+  --midnight: #07111F;
+  --deep-blue: #101E30;
+  --cyan: #10D9F5;
+  --violet: #A78BFA;
+  --cloud: #F4F7FB;
+  --muted: #9DB0C8;
+
+  --bg: var(--midnight);
+  --text: var(--cloud);
+  --card-bg: rgba(16, 30, 48, 0.55);
+  --card-border: rgba(157, 176, 200, 0.15);
+
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Sora', 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============ RESET ============ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ============ PRELOADER ============ */
+.preloader {
+  position: fixed; inset: 0;
+  background: #07111F; z-index: 10000;
+  display: flex; justify-content: center; align-items: center;
+  flex-direction: column; gap: 20px;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-logo {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.preloader-logo img {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: #fff; padding: 5px;
+  animation: pulseLogo 1.6s ease-in-out infinite;
+}
+.preloader-logo-text {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 700;
+  color: #fff; letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.preloader-bar {
+  width: 180px; height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px; overflow: hidden;
+}
+.preloader-bar-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  animation: loadBar 1.4s ease-in-out forwards;
+}
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+@keyframes loadBar { 0% { width: 0%; } 100% { width: 100%; } }
+
+/* ============ MINI HEADER ============ */
+.auth-header {
+  padding: 22px 0;
+  position: relative;
+  z-index: 10;
+}
+.auth-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.auth-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.auth-logo img {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fff; padding: 3px;
+}
+.auth-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.auth-logo-text strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: -0.3px;
+}
+.auth-logo-text small {
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+/* Language switcher */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 50px;
+  background: rgba(16,217,245,0.08);
+  border: 1px solid rgba(16,217,245,0.25);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+.lang-switch:hover {
+  background: rgba(16,217,245,0.18);
+  border-color: var(--cyan);
+}
+
+/* ============ AUTH WRAP ============ */
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.auth-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 500px at 20% 20%, rgba(16,217,245,0.12), transparent 60%),
+    radial-gradient(800px 600px at 80% 80%, rgba(167,139,250,0.12), transparent 60%);
+  pointer-events: none;
+}
+.auth-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* LEFT VISUAL */
+.auth-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+}
+.auth-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid rgba(16,217,245,0.3);
+  border-radius: 50px;
+  background: rgba(16,217,245,0.05);
+}
+.auth-tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.auth-visual h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+.auth-visual h1 .line-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text);
+  display: inline-block;
+}
+.auth-visual h1 .line-gradient {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.auth-visual > p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 460px;
+}
+.auth-features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+.auth-feature {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.94rem;
+  color: var(--muted);
+}
+.auth-feature .ic {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--midnight);
+  font-size: 0.7rem;
+  font-weight: 800;
+  margin-top: 2px;
+}
+.auth-feature strong { color: var(--text); font-weight: 600; }
+
+/* RIGHT CARD */
+.auth-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 26px;
+  padding: 44px 40px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+}
+.auth-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+.auth-card > p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 30px;
+}
+
+/* FORM */
+.form-group { margin-bottom: 20px; position: relative; }
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.form-group label .req { color: var(--cyan); }
+
+.input-wrap { position: relative; display: flex; align-items: center; }
+.input-wrap .input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+.input-wrap input {
+  width: 100%;
+  padding: 14px 46px 14px 46px;
+  background: rgba(7, 17, 31, 0.5);
+  border: 1.5px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+.input-wrap input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(16,217,245,0.12);
+  background: rgba(7, 17, 31, 0.7);
+}
+.input-wrap input:focus ~ .input-icon { color: var(--cyan); }
+.input-wrap input.error {
+  border-color: #ff6464;
+  box-shadow: 0 0 0 3px rgba(255,100,100,0.12);
+}
+.toggle-pw {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+.toggle-pw:hover { color: var(--cyan); background: rgba(16,217,245,0.08); }
+
+.form-error {
+  color: #ff9b9b;
+  font-size: 0.78rem;
+  margin-top: 6px;
+  display: none;
+}
+.form-group.has-error .form-error { display: block; }
+
+/* Options row */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  user-select: none;
+}
+.checkbox input { display: none; }
+.checkbox-box {
+  width: 20px; height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid var(--card-border);
+  background: rgba(7, 17, 31, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.checkbox-box::after {
+  content: '✓';
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--midnight);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: var(--transition);
+}
+.checkbox input:checked + .checkbox-box {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  border-color: transparent;
+}
+.checkbox input:checked + .checkbox-box::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.forgot-link {
+  font-size: 0.86rem;
+  color: var(--cyan);
+  transition: var(--transition);
+}
+.forgot-link:hover { color: var(--violet); }
+
+/* Submit button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  color: var(--midnight);
+  box-shadow: 0 8px 30px rgba(16,217,245,0.35);
+  margin-bottom: 22px;
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(16,217,245,0.55);
+}
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(7,17,31,0.3);
+  border-top-color: var(--midnight);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+.btn.loading .spinner { display: block; }
+.btn.loading .btn-text { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 22px 0 20px;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--card-border);
+}
+
+.auth-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.auth-footer a {
+  color: var(--cyan);
+  font-weight: 600;
+  transition: var(--transition);
+}
+.auth-footer a:hover { color: var(--violet); }
+
+/* Info box */
+.info-box {
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin-top: 20px;
+  background: rgba(16,217,245,0.08);
+  border: 1px solid rgba(16,217,245,0.25);
+  color: var(--cyan);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.info-box .ic { flex-shrink: 0; font-weight: 800; }
+
+/* Form message */
+.form-msg {
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  display: none;
+  line-height: 1.5;
+}
+.form-msg.show { display: block; }
+.form-msg.success {
+  background: rgba(16,217,245,0.1);
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+}
+.form-msg.error {
+  background: rgba(255,100,100,0.1);
+  border: 1px solid #ff6464;
+  color: #ff9b9b;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .auth-grid { grid-template-columns: 1fr; gap: 40px; max-width: 520px; }
+  .auth-visual { align-items: center; text-align: center; }
+  .auth-visual > p { font-size: 0.96rem; }
+  .auth-visual h1 { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+  .auth-feature { justify-content: flex-start; text-align: left; }
+  .auth-features { max-width: 400px; }
+}
+
+@media (max-width: 600px) {
+  .auth-header { padding: 16px 0; }
+  .auth-logo img { width: 36px; height: 36px; }
+  .auth-logo-text strong { font-size: 0.88rem; }
+  .auth-logo-text small { display: none; }
+  .lang-switch { min-width: 46px; height: 36px; font-size: 0.75rem; padding: 0 10px; }
+
+  .auth-wrap { padding: 20px 18px 50px; }
+  .auth-visual { gap: 20px; }
+  .auth-visual h1 { font-size: 1.7rem; letter-spacing: -1px; }
+  .auth-visual h1 .line-outline { -webkit-text-stroke: 1.5px var(--text); }
+  .auth-tag { font-size: 0.68rem; padding: 6px 12px; }
+  .auth-feature { font-size: 0.9rem; }
+
+  .auth-card { padding: 28px 22px; border-radius: 22px; }
+  .auth-card h2 { font-size: 1.4rem; }
+  .auth-card > p { font-size: 0.88rem; margin-bottom: 24px; }
+  .input-wrap input { padding: 13px 42px 13px 44px; font-size: 0.92rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">
+    <img src="logo.png" alt="Sir Ambedkar Library" />
+    <div class="preloader-logo-text">Sir Ambedkar Library</div>
+  </div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+</div>
+
+<!-- MINI HEADER -->
+<header class="auth-header">
+  <div class="auth-header-inner">
+    <a href="index.html" class="auth-logo">
+      <img src="logo.png" alt="Sir Ambedkar Library" />
+      <span class="auth-logo-text">
+        <strong>Sir Ambedkar Library</strong>
+        <small>Abdullapur · Meerut</small>
+      </span>
+    </a>
+
+    <button class="lang-switch" id="langSwitch" aria-label="Change language">
+      <span id="langLabel">EN</span>
+    </button>
+  </div>
+</header>
+
+<!-- AUTH WRAP -->
+<main class="auth-wrap">
+  <div class="auth-grid">
+
+    <!-- LEFT VISUAL -->
+    <div class="auth-visual">
+      <div class="auth-tag">
+        <span class="dot"></span>
+        Student Portal
+      </div>
+
+      <h1>
+        Welcome<br />
+        <span class="line-outline">back,</span><br />
+        <span class="line-gradient">focused one.</span>
+      </h1>
+
+      <p>
+        Login to access your student dashboard — check your details, view notifications and stay connected with Sir Ambedkar Library.
+      </p>
+
+      <ul class="auth-features">
+        <li class="auth-feature">
+          <span class="ic">✓</span>
+          <span><strong>Personal Dashboard</strong> — your study space at a glance.</span>
+        </li>
+        <li class="auth-feature">
+          <span class="ic">✓</span>
+          <span><strong>Free Access</strong> — no fees, no barriers, just study.</span>
+        </li>
+        <li class="auth-feature">
+          <span class="ic">✓</span>
+          <span><strong>Notifications</strong> — updates about the library.</span>
+        </li>
+        <li class="auth-feature">
+          <span class="ic">✓</span>
+          <span><strong>Bilingual Support</strong> — use the site in Hindi or English.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="auth-card">
+      <h2>Student Login</h2>
+      <p>Enter your credentials to continue.</p>
+
+      <div class="form-msg" id="formMsg"></div>
+
+      <form id="loginForm" novalidate autocomplete="on">
+
+        <div class="form-group" data-field="email">
+          <label for="lEmail">Email Address <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+            <input type="email" id="lEmail" name="email" placeholder="your@email.com" autocomplete="email" required />
+          </div>
+          <div class="form-error">Please enter a valid email</div>
+        </div>
+
+        <div class="form-group" data-field="password">
+          <label for="lPassword">Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="lPassword" name="password" placeholder="Enter your password" autocomplete="current-password" required />
+            <button type="button" class="toggle-pw" id="togglePw" aria-label="Show password">👁</button>
+          </div>
+          <div class="form-error">Password must be at least 6 characters</div>
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox">
+            <input type="checkbox" id="rememberMe" />
+            <span class="checkbox-box"></span>
+            <span>Remember me</span>
+          </label>
+          <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="loginBtn">
+          <span class="spinner"></span>
+          <span class="btn-text">Login to Dashboard</span>
+        </button>
+
+      </form>
+
+      <div class="auth-divider">New here?</div>
+
+      <p class="auth-footer">
+        Don't have an account? <a href="register.html">Create one now →</a>
+      </p>
+
+      <div class="info-box">
+        <span class="ic">ℹ</span>
+        <span>Demo login: any valid email + 6+ character password works right now.</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+/* ============================================================
+   1. PRELOADER
+   ============================================================ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader')?.classList.add('hidden');
+  }, 900);
+});
+
+/* ============================================================
+   2. AUTO-REDIRECT IF ALREADY LOGGED IN
+   ============================================================ */
+(function autoRedirect() {
+  try {
+    const raw = localStorage.getItem('sal_session');
+    if (raw) {
+      const session = JSON.parse(raw);
+      if (session && session.email) {
+        // Already logged in
+        const lang = localStorage.getItem('sal_lang');
+        if (lang) {
+          window.location.replace('dashboard.html');
+        } else {
+          window.location.replace('language.html');
+        }
+      }
+    }
+  } catch (e) {
+    localStorage.removeItem('sal_session');
+  }
+})();
+
+/* ============================================================
+   3. PASSWORD TOGGLE
+   ============================================================ */
+const togglePw = document.getElementById('togglePw');
+const pwInput = document.getElementById('lPassword');
+togglePw?.addEventListener('click', () => {
+  const isPassword = pwInput.type === 'password';
+  pwInput.type = isPassword ? 'text' : 'password';
+  togglePw.textContent = isPassword ? '🙈' : '👁';
+});
+
+/* ============================================================
+   4. FIELD VALIDATION
+   ============================================================ */
+function validateField(group) {
+  const field = group.dataset.field;
+  const input = group.querySelector('input');
+  const value = (input.value || '').trim();
+  let isValid = true;
+
+  if (field === 'email') {
+    isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  } else if (field === 'password') {
+    isValid = value.length >= 6;
+  }
+
+  group.classList.toggle('has-error', !isValid);
+  input.classList.toggle('error', !isValid);
+  return isValid;
+}
+
+document.querySelectorAll('.form-group[data-field]').forEach(group => {
+  const input = group.querySelector('input');
+  input?.addEventListener('blur', () => validateField(group));
+  input?.addEventListener('input', () => {
+    if (group.classList.contains('has-error')) validateField(group);
+  });
+});
+
+/* ============================================================
+   5. FORM SUBMIT → SAVE SESSION → REDIRECT
+   ============================================================ */
+const form = document.getElementById('loginForm');
+const formMsg = document.getElementById('formMsg');
+const loginBtn = document.getElementById('loginBtn');
+
+form?.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Validate all fields
+  let allValid = true;
+  document.querySelectorAll('.form-group[data-field]').forEach(group => {
+    if (!validateField(group)) allValid = false;
+  });
+
+  if (!allValid) {
+    formMsg.className = 'form-msg error show';
+    formMsg.textContent = '⚠ Please fix the highlighted fields and try again.';
+    return;
+  }
+
+  // Show loading
+  loginBtn.classList.add('loading');
+  loginBtn.disabled = true;
+
+  const email = document.getElementById('lEmail').value.trim();
+  const nameFromEmail = email.split('@')[0];
+  const displayName = nameFromEmail
+    .replace(/[._-]/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase());
+
+  // Simulate network delay
+  setTimeout(() => {
+    // Save session
+    try {
+      localStorage.setItem('sal_session', JSON.stringify({
+        email: email,
+        name: displayName || 'Student',
+        loggedInAt: new Date().toISOString()
+      }));
+    } catch (err) {
+      formMsg.className = 'form-msg error show';
+      formMsg.textContent = '⚠ Could not save session. Please enable localStorage.';
+      loginBtn.classList.remove('loading');
+      loginBtn.disabled = false;
+      return;
+    }
+
+    // Success message
+    formMsg.className = 'form-msg success show';
+    formMsg.textContent = '✓ Login successful! Redirecting...';
+
+    // Check language — decide where to send user
+    setTimeout(() => {
+      const chosenLang = localStorage.getItem('sal_lang');
+      if (!chosenLang) {
+        // Pehli baar login → language chooser
+        window.location.href = 'language.html';
+      } else {
+        // Language already chosen → dashboard
+        window.location.href = 'dashboard.html';
+      }
+    }, 500);
+
+  }, 800);
+});
+
+/* ============================================================
+   6. LANGUAGE SWITCHER
+   ============================================================ */
+const langSwitch = document.getElementById('langSwitch');
+const langLabel = document.getElementById('langLabel');
+
+// Set initial label
+(function initLangLabel() {
+  const currentLang = localStorage.getItem('sal_lang') || 'en';
+  if (langLabel) {
+    langLabel.textContent = currentLang === 'hi' ? 'हिं' : 'EN';
+  }
+})();
+
+langSwitch?.addEventListener('click', () => {
+  const current = localStorage.getItem('sal_lang') || 'en';
+  const next = current === 'hi' ? 'en' : 'hi';
+  localStorage.setItem('sal_lang', next);
+  if (langLabel) {
+    langLabel.textContent = next === 'hi' ? 'हिं' : 'EN';
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Student Registration — Sir Ambedkar Library</title>
+<meta name="description" content="Create your free student account at Sir Ambedkar Library.">
+<link rel="icon" href="logo.png">
+<meta name="robots" content="noindex, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ ROOT ============ */
+:root {
+  --midnight: #07111F;
+  --deep-blue: #101E30;
+  --cyan: #10D9F5;
+  --violet: #A78BFA;
+  --cloud: #F4F7FB;
+  --muted: #9DB0C8;
+
+  --bg: var(--midnight);
+  --text: var(--cloud);
+  --card-bg: rgba(16, 30, 48, 0.55);
+  --card-border: rgba(157, 176, 200, 0.15);
+
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Sora', 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============ RESET ============ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ============ PRELOADER ============ */
+.preloader {
+  position: fixed; inset: 0;
+  background: #07111F; z-index: 10000;
+  display: flex; justify-content: center; align-items: center;
+  flex-direction: column; gap: 20px;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-logo {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.preloader-logo img {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: #fff; padding: 5px;
+  animation: pulseLogo 1.6s ease-in-out infinite;
+}
+.preloader-logo-text {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 700;
+  color: #fff; letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.preloader-bar {
+  width: 180px; height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px; overflow: hidden;
+}
+.preloader-bar-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  animation: loadBar 1.4s ease-in-out forwards;
+}
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+@keyframes loadBar { 0% { width: 0%; } 100% { width: 100%; } }
+
+/* ============ MINI HEADER ============ */
+.auth-header {
+  padding: 22px 0;
+  position: relative;
+  z-index: 10;
+}
+.auth-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.auth-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.auth-logo img {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fff; padding: 3px;
+}
+.auth-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.auth-logo-text strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: -0.3px;
+}
+.auth-logo-text small {
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 50px;
+  background: rgba(16,217,245,0.08);
+  border: 1px solid rgba(16,217,245,0.25);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+.lang-switch:hover {
+  background: rgba(16,217,245,0.18);
+  border-color: var(--cyan);
+}
+
+/* ============ AUTH WRAP ============ */
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.auth-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 500px at 20% 20%, rgba(16,217,245,0.12), transparent 60%),
+    radial-gradient(800px 600px at 80% 80%, rgba(167,139,250,0.12), transparent 60%);
+  pointer-events: none;
+}
+.auth-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* LEFT VISUAL */
+.auth-visual {
+  position: sticky;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding-top: 20px;
+}
+.auth-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid rgba(16,217,245,0.3);
+  border-radius: 50px;
+  background: rgba(16,217,245,0.05);
+}
+.auth-tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.auth-visual h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+.auth-visual h1 .line-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text);
+  display: inline-block;
+}
+.auth-visual h1 .line-gradient {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.auth-visual > p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+  width: 100%;
+}
+.benefit {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+.benefit:hover {
+  border-color: rgba(16,217,245,0.35);
+  transform: translateX(4px);
+}
+.benefit-ic {
+  flex-shrink: 0;
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(16,217,245,0.15), rgba(167,139,250,0.15));
+  border: 1px solid rgba(16,217,245,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.benefit-text h4 {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.benefit-text p {
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+/* RIGHT CARD */
+.auth-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 26px;
+  padding: 42px 40px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+}
+.auth-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+.auth-card > p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+/* ============ STEPS ============ */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--card-border);
+}
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.45;
+  transition: var(--transition);
+}
+.step.active, .step.done { opacity: 1; }
+.step-dot {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(16,217,245,0.08);
+  border: 1.5px solid var(--card-border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--muted);
+  transition: var(--transition);
+}
+.step.active .step-dot {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  border-color: transparent;
+  color: var(--midnight);
+  box-shadow: 0 0 20px rgba(16,217,245,0.4);
+}
+.step.done .step-dot {
+  background: rgba(16,217,245,0.15);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.step.done .step-dot span { display: none; }
+.step.done .step-dot::after { content: '✓'; font-weight: 800; }
+.step-label {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+.step.active .step-label, .step.done .step-label { color: var(--text); }
+
+/* ============ FORM STEPS ============ */
+.form-step {
+  display: none;
+  animation: fadeInStep 0.4s ease;
+}
+.form-step.active { display: block; }
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group { margin-bottom: 18px; position: relative; }
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.form-group label .req { color: var(--cyan); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.input-wrap { position: relative; display: flex; align-items: center; }
+.input-wrap .input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+.input-wrap input,
+.input-wrap select {
+  width: 100%;
+  padding: 13px 42px 13px 44px;
+  background: rgba(7, 17, 31, 0.5);
+  border: 1.5px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  transition: var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+.input-wrap select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2310D9F5' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+}
+.input-wrap select option { background: #0a1a2e; color: var(--text); }
+.input-wrap input:focus,
+.input-wrap select:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(16,217,245,0.12);
+  background: rgba(7, 17, 31, 0.7);
+}
+.input-wrap input:focus ~ .input-icon,
+.input-wrap select:focus ~ .input-icon { color: var(--cyan); }
+.input-wrap input.error,
+.input-wrap select.error {
+  border-color: #ff6464;
+  box-shadow: 0 0 0 3px rgba(255,100,100,0.12);
+}
+.toggle-pw {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+.toggle-pw:hover { color: var(--cyan); background: rgba(16,217,245,0.08); }
+
+.form-error {
+  color: #ff9b9b;
+  font-size: 0.78rem;
+  margin-top: 6px;
+  display: none;
+}
+.form-group.has-error .form-error { display: block; }
+
+/* Password strength */
+.pw-strength {
+  margin-top: 8px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.pw-bar {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--card-border);
+  transition: background 0.3s ease;
+}
+.pw-bar.weak { background: #ff6464; }
+.pw-bar.fair { background: #fbbf24; }
+.pw-bar.strong { background: var(--cyan); }
+.pw-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-left: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  min-width: 60px;
+}
+
+/* Checkbox */
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  user-select: none;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.checkbox input { display: none; }
+.checkbox-box {
+  width: 20px; height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid var(--card-border);
+  background: rgba(7, 17, 31, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.checkbox-box::after {
+  content: '✓';
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--midnight);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: var(--transition);
+}
+.checkbox input:checked + .checkbox-box {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  border-color: transparent;
+}
+.checkbox input:checked + .checkbox-box::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.checkbox a { color: var(--cyan); text-decoration: underline; }
+.checkbox.has-error { color: #ff9b9b; }
+.checkbox.has-error .checkbox-box { border-color: #ff6464; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.93rem;
+  font-family: var(--font-body);
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  color: var(--midnight);
+  box-shadow: 0 8px 30px rgba(16,217,245,0.35);
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(16,217,245,0.55);
+}
+.btn-primary:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--card-border);
+}
+.btn-ghost:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.step-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.step-actions .btn {
+  flex: 1;
+}
+.step-actions .btn-back {
+  flex: 0 0 auto;
+  padding: 14px 20px;
+  font-size: 0.88rem;
+}
+
+/* Review list */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0 22px;
+}
+.review-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: rgba(7, 17, 31, 0.4);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  font-size: 0.88rem;
+}
+.review-item .rv-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.review-item .rv-value {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+  word-break: break-word;
+}
+
+/* Info box */
+.info-box {
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-size: 0.83rem;
+  line-height: 1.55;
+  margin-bottom: 20px;
+  background: rgba(16,217,245,0.08);
+  border: 1px solid rgba(16,217,245,0.25);
+  color: var(--cyan);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.info-box .ic { flex-shrink: 0; font-weight: 800; }
+
+/* Form message */
+.form-msg {
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  display: none;
+  line-height: 1.5;
+}
+.form-msg.show { display: block; }
+.form-msg.error {
+  background: rgba(255,100,100,0.1);
+  border: 1px solid #ff6464;
+  color: #ff9b9b;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(7,17,31,0.3);
+  border-top-color: var(--midnight);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+.btn.loading .spinner { display: block; }
+.btn.loading .btn-text { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.auth-footer {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--card-border);
+}
+.auth-footer a { color: var(--cyan); font-weight: 600; }
+.auth-footer a:hover { color: var(--violet); }
+
+/* SUCCESS STATE */
+.success-state {
+  text-align: center;
+  padding: 20px 0;
+  display: none;
+}
+.success-state.show { display: block; }
+.success-icon {
+  width: 78px; height: 78px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(16,217,245,0.15), rgba(167,139,250,0.15));
+  border: 1px solid var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.3rem;
+  margin: 0 auto 22px;
+  box-shadow: 0 0 40px rgba(16,217,245,0.4);
+  animation: pulseSuccess 1.6s ease-in-out infinite;
+  color: var(--cyan);
+}
+@keyframes pulseSuccess {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.success-state h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.success-state p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .auth-grid { grid-template-columns: 1fr; gap: 40px; max-width: 560px; }
+  .auth-visual { position: static; align-items: center; text-align: center; padding-top: 0; }
+  .auth-visual > p { font-size: 0.96rem; }
+  .auth-visual h1 { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+  .benefits-list { max-width: 460px; width: 100%; }
+  .benefit { text-align: left; }
+}
+
+@media (max-width: 600px) {
+  .auth-header { padding: 16px 0; }
+  .auth-logo img { width: 36px; height: 36px; }
+  .auth-logo-text strong { font-size: 0.88rem; }
+  .auth-logo-text small { display: none; }
+  .lang-switch { min-width: 46px; height: 36px; font-size: 0.75rem; padding: 0 10px; }
+
+  .auth-wrap { padding: 16px 18px 50px; }
+  .auth-visual { gap: 20px; }
+  .auth-visual h1 { font-size: 1.7rem; letter-spacing: -1px; }
+  .auth-visual h1 .line-outline { -webkit-text-stroke: 1.5px var(--text); }
+  .auth-tag { font-size: 0.68rem; padding: 6px 12px; }
+  .benefit { padding: 14px; }
+  .benefit-ic { width: 34px; height: 34px; font-size: 0.9rem; }
+  .benefit-text h4 { font-size: 0.88rem; }
+  .benefit-text p { font-size: 0.78rem; }
+
+  .auth-card { padding: 28px 22px; border-radius: 22px; }
+  .auth-card h2 { font-size: 1.35rem; }
+  .auth-card > p { font-size: 0.86rem; margin-bottom: 20px; }
+
+  .steps { gap: 4px; padding-bottom: 18px; margin-bottom: 22px; }
+  .step-dot { width: 28px; height: 28px; font-size: 0.7rem; }
+  .step-label { font-size: 0.6rem; letter-spacing: 0.5px; }
+
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .input-wrap input,
+  .input-wrap select { padding: 12px 40px 12px 42px; font-size: 0.9rem; }
+
+  .step-actions { flex-direction: column-reverse; }
+  .step-actions .btn { width: 100%; }
+
+  .review-item { padding: 10px 14px; font-size: 0.84rem; }
+  .review-item .rv-label { font-size: 0.75rem; }
+
+  .success-icon { width: 66px; height: 66px; font-size: 2rem; }
+  .success-state h3 { font-size: 1.2rem; }
+  .success-state p { font-size: 0.88rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">
+    <img src="logo.png" alt="Sir Ambedkar Library" />
+    <div class="preloader-logo-text">Sir Ambedkar Library</div>
+  </div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+</div>
+
+<!-- MINI HEADER -->
+<header class="auth-header">
+  <div class="auth-header-inner">
+    <a href="index.html" class="auth-logo">
+      <img src="logo.png" alt="Sir Ambedkar Library" />
+      <span class="auth-logo-text">
+        <strong>Sir Ambedkar Library</strong>
+        <small>Abdullapur · Meerut</small>
+      </span>
+    </a>
+
+    <button class="lang-switch" id="langSwitch" aria-label="Change language">
+      <span id="langLabel">EN</span>
+    </button>
+  </div>
+</header>
+
+<!-- AUTH WRAP -->
+<main class="auth-wrap">
+  <div class="auth-grid">
+
+    <!-- LEFT VISUAL -->
+    <div class="auth-visual">
+      <div class="auth-tag">
+        <span class="dot"></span>
+        Student Registration
+      </div>
+
+      <h1>
+        Start your<br />
+        <span class="line-outline">focus</span><br />
+        <span class="line-gradient">journey.</span>
+      </h1>
+
+      <p>
+        Create your free student account at Sir Ambedkar Library and get access to a quiet, focused study space.
+      </p>
+
+      <ul class="benefits-list">
+        <li class="benefit">
+          <div class="benefit-ic">🎯</div>
+          <div class="benefit-text">
+            <h4>Personal Dashboard</h4>
+            <p>Your study space at a glance.</p>
+          </div>
+        </li>
+        <li class="benefit">
+          <div class="benefit-ic">💯</div>
+          <div class="benefit-text">
+            <h4>Completely Free</h4>
+            <p>No fees, no barriers. Just come and study.</p>
+          </div>
+        </li>
+        <li class="benefit">
+          <div class="benefit-ic">🔔</div>
+          <div class="benefit-text">
+            <h4>Notifications</h4>
+            <p>Updates about the library and timings.</p>
+          </div>
+        </li>
+        <li class="benefit">
+          <div class="benefit-ic">🌐</div>
+          <div class="benefit-text">
+            <h4>Bilingual</h4>
+            <p>Use the site in Hindi or English.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="auth-card">
+      <h2>Create Your Account</h2>
+      <p>Join Sir Ambedkar Library in 3 quick steps.</p>
+
+      <!-- STEPS -->
+      <div class="steps" id="stepsIndicator">
+        <div class="step active" data-step="1">
+          <div class="step-dot"><span>1</span></div>
+          <div class="step-label">Personal</div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-dot"><span>2</span></div>
+          <div class="step-label">Password</div>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-dot"><span>3</span></div>
+          <div class="step-label">Confirm</div>
+        </div>
+      </div>
+
+      <div class="form-msg" id="formMsg"></div>
+
+      <form id="registerForm" novalidate>
+
+        <!-- STEP 1 -->
+        <div class="form-step active" data-step="1">
+
+          <div class="form-group" data-field="name">
+            <label for="rName">Full Name <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="input-icon">👤</span>
+              <input type="text" id="rName" name="name" placeholder="Your full name" autocomplete="name" required />
+            </div>
+            <div class="form-error">Please enter your full name (min 3 characters)</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" data-field="email">
+              <label for="rEmail">Email <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">✉</span>
+                <input type="email" id="rEmail" name="email" placeholder="your@email.com" autocomplete="email" required />
+              </div>
+              <div class="form-error">Please enter a valid email</div>
+            </div>
+
+            <div class="form-group" data-field="phone">
+              <label for="rPhone">Phone <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">📞</span>
+                <input type="tel" id="rPhone" name="phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" required />
+              </div>
+              <div class="form-error">Please enter a valid phone number</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" data-field="city">
+              <label for="rCity">City <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">📍</span>
+                <input type="text" id="rCity" name="city" placeholder="e.g. Meerut" required />
+              </div>
+              <div class="form-error">Please enter your city</div>
+            </div>
+
+            <div class="form-group" data-field="purpose">
+              <label for="rPurpose">Preparing For</label>
+              <div class="input-wrap">
+                <span class="input-icon">📚</span>
+                <select id="rPurpose" name="purpose">
+                  <option value="">Select (optional)</option>
+                  <option value="upsc">UPSC / Civil Services</option>
+                  <option value="ssc">SSC / Banking</option>
+                  <option value="neet">NEET / Medical</option>
+                  <option value="jee">JEE / Engineering</option>
+                  <option value="college">College / University</option>
+                  <option value="school">School (Class 9–12)</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-primary" data-next="1">
+              Continue →
+            </button>
+          </div>
+
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="form-step" data-step="2">
+
+          <div class="form-group" data-field="password">
+            <label for="rPassword">Create Password <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="rPassword" name="password" placeholder="Minimum 8 characters" autocomplete="new-password" required />
+              <button type="button" class="toggle-pw" id="togglePw1" aria-label="Show password">👁</button>
+            </div>
+            <div class="pw-strength" id="pwStrength">
+              <div class="pw-bar"></div>
+              <div class="pw-bar"></div>
+              <div class="pw-bar"></div>
+              <div class="pw-bar"></div>
+              <span class="pw-label" id="pwLabel">—</span>
+            </div>
+            <div class="form-error">Password must be at least 8 characters</div>
+          </div>
+
+          <div class="form-group" data-field="confirmPassword">
+            <label for="rConfirmPassword">Confirm Password <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="rConfirmPassword" name="confirmPassword" placeholder="Re-enter password" autocomplete="new-password" required />
+              <button type="button" class="toggle-pw" id="togglePw2" aria-label="Show password">👁</button>
+            </div>
+            <div class="form-error">Passwords do not match</div>
+          </div>
+
+          <div class="info-box">
+            <span class="ic">🔐</span>
+            <span>Use a strong password with uppercase, lowercase, numbers and symbols. Never share it with anyone.</span>
+          </div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-ghost btn-back" data-back="2">← Back</button>
+            <button type="button" class="btn btn-primary" data-next="2">
+              Continue →
+            </button>
+          </div>
+
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="form-step" data-step="3">
+
+          <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 12px;">
+            Please review your details before submitting.
+          </p>
+
+          <div class="review-list">
+            <div class="review-item">
+              <span class="rv-label">Full Name</span>
+              <span class="rv-value" id="rvName">—</span>
+            </div>
+            <div class="review-item">
+              <span class="rv-label">Email</span>
+              <span class="rv-value" id="rvEmail">—</span>
+            </div>
+            <div class="review-item">
+              <span class="rv-label">Phone</span>
+              <span class="rv-value" id="rvPhone">—</span>
+            </div>
+            <div class="review-item">
+              <span class="rv-label">City</span>
+              <span class="rv-value" id="rvCity">—</span>
+            </div>
+            <div class="review-item">
+              <span class="rv-label">Preparing For</span>
+              <span class="rv-value" id="rvPurpose">—</span>
+            </div>
+          </div>
+
+          <label class="checkbox" id="termsCheckbox">
+            <input type="checkbox" id="rTerms" required />
+            <span class="checkbox-box"></span>
+            <span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. <span class="req" style="color: var(--cyan);">*</span></span>
+          </label>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-ghost btn-back" data-back="3">← Back</button>
+            <button type="submit" class="btn btn-primary" id="registerBtn">
+              <span class="spinner"></span>
+              <span class="btn-text">Create Account</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-state" id="successState">
+          <div class="success-icon">✓</div>
+          <h3>Account Created!</h3>
+          <p>Your registration has been submitted successfully. You can now login with your email and password.</p>
+          <a href="login.html" class="btn btn-primary" style="display: inline-flex; padding: 14px 32px;">Go to Login →</a>
+        </div>
+
+      </form>
+
+      <div class="auth-footer" id="authFooter">
+        Already have an account? <a href="login.html">Login here →</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   1. PRELOADER
+   ============================================================ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader')?.classList.add('hidden');
+  }, 900);
+});
+
+/* ============================================================
+   2. AUTO-REDIRECT IF ALREADY LOGGED IN
+   ============================================================ */
+(function autoRedirect() {
+  try {
+    const raw = localStorage.getItem('sal_session');
+    if (raw) {
+      const session = JSON.parse(raw);
+      if (session && session.email) {
+        const lang = localStorage.getItem('sal_lang');
+        if (lang) {
+          window.location.replace('dashboard.html');
+        } else {
+          window.location.replace('language.html');
+        }
+      }
+    }
+  } catch (e) {
+    localStorage.removeItem('sal_session');
+  }
+})();
+
+/* ============================================================
+   3. MULTI-STEP LOGIC
+   ============================================================ */
+const steps = document.querySelectorAll('.form-step');
+const stepIndicators = document.querySelectorAll('.step');
+const formMsg = document.getElementById('formMsg');
+let currentStep = 1;
+
+function goToStep(step) {
+  steps.forEach(s => s.classList.toggle('active', Number(s.dataset.step) === step));
+  stepIndicators.forEach(ind => {
+    const n = Number(ind.dataset.step);
+    ind.classList.toggle('active', n === step);
+    ind.classList.toggle('done', n < step);
+  });
+  currentStep = step;
+  formMsg.classList.remove('show');
+  document.querySelector('.auth-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============================================================
+   4. FIELD VALIDATION
+   ============================================================ */
+function setFieldError(group, hasError) {
+  group.classList.toggle('has-error', hasError);
+  const input = group.querySelector('input, select');
+  if (input) input.classList.toggle('error', hasError);
+}
+
+function validateField(group) {
+  const field = group.dataset.field;
+  const input = group.querySelector('input, select');
+  const value = (input.value || '').trim();
+  let valid = true;
+
+  switch (field) {
+    case 'name': valid = value.length >= 3; break;
+    case 'email': valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); break;
+    case 'phone': {
+      const digits = value.replace(/\D/g, '');
+      valid = digits.length >= 10 && digits.length <= 13;
+      break;
+    }
+    case 'city': valid = value.length >= 2; break;
+    case 'purpose': valid = true; break;
+    case 'password': valid = value.length >= 8; break;
+    case 'confirmPassword': {
+      const pw = document.getElementById('rPassword').value;
+      valid = value.length > 0 && value === pw;
+      break;
+    }
+  }
+  setFieldError(group, !valid);
+  return valid;
+}
+
+document.querySelectorAll('.form-group[data-field]').forEach(group => {
+  const input = group.querySelector('input, select');
+  input?.addEventListener('blur', () => validateField(group));
+  input?.addEventListener('input', () => {
+    if (group.classList.contains('has-error')) validateField(group);
+  });
+});
+
+/* ============================================================
+   5. STEP NAVIGATION
+   ============================================================ */
+function validateCurrentStep() {
+  let allValid = true;
+  document.querySelectorAll(`.form-step[data-step="${currentStep}"] .form-group[data-field]`).forEach(group => {
+    if (!validateField(group)) allValid = false;
+  });
+  return allValid;
+}
+
+document.querySelectorAll('[data-next]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (!validateCurrentStep()) {
+      formMsg.className = 'form-msg error show';
+      formMsg.textContent = '⚠ Please fix the highlighted fields to continue.';
+      return;
+    }
+    if (currentStep === 1) {
+      goToStep(2);
+    } else if (currentStep === 2) {
+      updateReview();
+      goToStep(3);
+    }
+  });
+});
+
+document.querySelectorAll('[data-back]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    goToStep(currentStep - 1);
+  });
+});
+
+/* ============================================================
+   6. UPDATE REVIEW
+   ============================================================ */
+function updateReview() {
+  const purposeSelect = document.getElementById('rPurpose');
+  const purposeText = purposeSelect.options[purposeSelect.selectedIndex].text;
+
+  document.getElementById('rvName').textContent = document.getElementById('rName').value || '—';
+  document.getElementById('rvEmail').textContent = document.getElementById('rEmail').value || '—';
+  document.getElementById('rvPhone').textContent = document.getElementById('rPhone').value || '—';
+  document.getElementById('rvCity').textContent = document.getElementById('rCity').value || '—';
+  document.getElementById('rvPurpose').textContent = purposeSelect.value ? purposeText : '—';
+}
+
+/* ============================================================
+   7. PASSWORD TOGGLES
+   ============================================================ */
+function setupToggle(btnId, inputId) {
+  const btn = document.getElementById(btnId);
+  const input = document.getElementById(inputId);
+  btn?.addEventListener('click', () => {
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    btn.textContent = isPassword ? '🙈' : '👁';
+  });
+}
+setupToggle('togglePw1', 'rPassword');
+setupToggle('togglePw2', 'rConfirmPassword');
+
+/* ============================================================
+   8. PASSWORD STRENGTH
+   ============================================================ */
+const pwInput = document.getElementById('rPassword');
+const pwBars = document.querySelectorAll('#pwStrength .pw-bar');
+const pwLabel = document.getElementById('pwLabel');
+
+pwInput?.addEventListener('input', () => {
+  const val = pwInput.value;
+  let score = 0;
+  if (val.length >= 8) score++;
+  if (/[A-Z]/.test(val)) score++;
+  if (/[0-9]/.test(val)) score++;
+  if (/[^A-Za-z0-9]/.test(val)) score++;
+
+  pwBars.forEach((bar, i) => {
+    bar.classList.remove('weak', 'fair', 'strong');
+    if (i < score) {
+      if (score <= 2) bar.classList.add('weak');
+      else if (score === 3) bar.classList.add('fair');
+      else bar.classList.add('strong');
+    }
+  });
+
+  const labels = ['—', 'Weak', 'Weak', 'Fair', 'Strong'];
+  pwLabel.textContent = val.length ? labels[score] : '—';
+});
+
+/* ============================================================
+   9. TERMS CHECKBOX
+   ============================================================ */
+const termsCheckbox = document.getElementById('termsCheckbox');
+const termsInput = document.getElementById('rTerms');
+termsInput?.addEventListener('change', () => {
+  termsCheckbox.classList.toggle('has-error', !termsInput.checked);
+});
+
+/* ============================================================
+   10. FORM SUBMIT
+   ============================================================ */
+const form = document.getElementById('registerForm');
+const registerBtn = document.getElementById('registerBtn');
+const successState = document.getElementById('successState');
+const authFooter = document.getElementById('authFooter');
+
+form?.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  let allValid = true;
+  document.querySelectorAll('.form-group[data-field]').forEach(group => {
+    if (!validateField(group)) allValid = false;
+  });
+
+  if (!termsInput.checked) {
+    termsCheckbox.classList.add('has-error');
+    allValid = false;
+  }
+
+  if (!allValid) {
+    formMsg.className = 'form-msg error show';
+    formMsg.textContent = '⚠ Please fix the highlighted fields and agree to the terms.';
+    const firstErrorStep = document.querySelector('.form-group.has-error')?.closest('.form-step');
+    if (firstErrorStep) goToStep(Number(firstErrorStep.dataset.step));
+    return;
+  }
+
+  // Show loading
+  registerBtn.classList.add('loading');
+  registerBtn.disabled = true;
+
+  // Simulate submission
+  setTimeout(() => {
+    registerBtn.classList.remove('loading');
+    registerBtn.disabled = false;
+
+    // Hide form + steps + footer, show success
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('stepsIndicator').style.display = 'none';
+    document.querySelector('.auth-card h2').textContent = 'Welcome aboard!';
+    document.querySelector('.auth-card > p').textContent = 'Your account has been created.';
+    successState.classList.add('show');
+    if (authFooter) authFooter.style.display = 'none';
+  }, 1400);
+});
+
+/* ============================================================
+   11. LANGUAGE SWITCHER
+   ============================================================ */
+const langSwitch = document.getElementById('langSwitch');
+const langLabel = document.getElementById('langLabel');
+
+(function initLangLabel() {
+  const currentLang = localStorage.getItem('sal_lang') || 'en';
+  if (langLabel) {
+    langLabel.textContent = currentLang === 'hi' ? 'हिं' : 'EN';
+  }
+})();
+
+langSwitch?.addEventListener('click', () => {
+  const current = localStorage.getItem('sal_lang') || 'en';
+  const next = current === 'hi' ? 'en' : 'hi';
+  localStorage.setItem('sal_lang', next);
+  if (langLabel) {
+    langLabel.textContent = next === 'hi' ? 'हिं' : 'EN';
+  }
+});
+</script>
+
+</body>
+</html>
